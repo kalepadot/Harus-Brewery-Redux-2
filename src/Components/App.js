@@ -58,8 +58,21 @@ handleKegSelection = (id) => {
 }
 
 handleAddingNewKeg = (newKeg) => {
-  const newKegList = this.state.kegList.concat(newKeg);
-  this.setState({kegList: newKegList})
+  // const newKegList = this.state.kegList.concat(newKeg);
+  // this.setState({kegList: newKegList})
+  const { dispatch } = this.props;
+  const { id, name, brand, price, alcoholPercent, inventory } = newKeg;
+  const action = {
+    type: 'ADD_KEG',
+    id: id,
+    name: name,
+    brand: brand,
+    price: price,
+    alcoholPercent: alcoholPercent,
+    inventory: inventory
+  }
+  dispatch(action);
+  this.setState({showHomePage: false});
 }
 
 handleBackToKegs = () => {

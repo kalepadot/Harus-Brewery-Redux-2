@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
+import PropTypes from 'prop-types';
 import KegHeader from './KegHeader/KegHeader';
 import KegDetails from './KegDetails/KegDetails';
 import MainHeader from './MainHeader/MainHeader';
@@ -50,7 +51,7 @@ constructor(props) {
   }
 }
 handleKegSelection = (id) => {
-  const selectedKeg = this.state.kegList.filter(keg => keg.id === id)[0];
+  const selectedKeg = this.props.masterKegList.filter(keg => keg.id === id)[0];
   this.setState({
     currentSelectedKeg: selectedKeg,
     showHomePage: false
@@ -106,13 +107,13 @@ handleKegPurchase = (id) => {
     });
   }
 
-  // handleKegDelete = id => {
-  //   const updateKegsList = this.state.kegList.filter(keg => keg.id !== id);
-  //   this.setState({
-  //     kegList: [...updateKegsList]
-  //   })
-  // }
-// og keg delete ^ ^ ^
+  handleKegDelete = id => {
+    const updateKegsList = this.state.kegList.filter(keg => keg.id !== id);
+    this.setState({
+      kegList: [...updateKegsList]
+    })
+  }
+// og keg delete that works ^ ^ ^
 
 handleKegDelete = (id) => {
   const { dispatch } = this.props;
@@ -172,6 +173,7 @@ handleKegDelete = (id) => {
 
  render() {
     let currentPage = this.currentPage();
+    console.log(this.props.masterKegList);
     return (
       <React.Fragment>
         {currentPage.header}
@@ -180,7 +182,15 @@ handleKegDelete = (id) => {
     )
   }
 }
+App.propTypes = {
+  masterKegList: PropTypes.object
+};
 
+const mapStateToProps = state => {
+  return {
+    masterKegList: state
+  }
+}
 
-App = connect()(App);
+App = connect(mapStateToProps)(App);
 export default App;

@@ -57,16 +57,17 @@ handleKegSelection = (id) => {
   })
 }
 
-handleAddingNewKeg = (newKeg) => {
+handleAddingNewKeg = (newKeg) => {   //doesnt work
   // const newKegList = this.state.kegList.concat(newKeg);
   // this.setState({kegList: newKegList})
   const { dispatch } = this.props;
-  const { id, name, brand, price, alcoholPercent, inventory } = newKeg;
+  const { id, name, brand, image, price, alcoholPercent, inventory } = newKeg;
   const action = {
     type: 'ADD_KEG',
     id: id,
     name: name,
     brand: brand,
+    image: image,
     price: price,
     alcoholPercent: alcoholPercent,
     inventory: inventory
@@ -76,7 +77,7 @@ handleAddingNewKeg = (newKeg) => {
 }
 
 handleBackToKegs = () => {
-  this.setState({
+  this.setState({   //dispatch(action) ? ? ?
     showHomePage: true
   })
 }
@@ -105,12 +106,24 @@ handleKegPurchase = (id) => {
     });
   }
 
-  handleKegDelete = id => {
-    const updateKegsList = this.state.kegList.filter(keg => keg.id !== id);
-    this.setState({
-      kegList: [...updateKegsList]
-    })
+  // handleKegDelete = id => {
+  //   const updateKegsList = this.state.kegList.filter(keg => keg.id !== id);
+  //   this.setState({
+  //     kegList: [...updateKegsList]
+  //   })
+  // }
+// og keg delete ^ ^ ^
+
+handleKegDelete = (id) => {
+  const { dispatch } = this.props;
+  const action = {
+    type: 'DELETE_KEG',
+    id: id
   }
+  dispatch(action);
+  this.setState({selectedKeg: null}); //doesnt work
+}
+
 
   // handleShowShoppingCart = () => {   ///prob not going to do a shopping cart *come back to this later
   //   this.setState({

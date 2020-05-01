@@ -74,7 +74,7 @@ handleAddingNewKeg = (newKeg) => {   //doesnt work
     inventory: inventory
   }
   dispatch(action);
-  this.setState({showHomePage: false});
+  this.setState({showHomePage: true});
 }
 
 handleBackToKegs = () => {
@@ -174,6 +174,7 @@ handleKegDelete = (id) => {
  render() {
     let currentPage = this.currentPage();
     
+    console.log("PROPS: ", this.props);
     return (
       <React.Fragment>
         {currentPage.header}
@@ -182,13 +183,14 @@ handleKegDelete = (id) => {
     )
   }
 }
+
 App.propTypes = {
   kegs: PropTypes.array
 };
 
 const mapStateToProps = state => {
   return {
-    kegs: state.kegsList
+    kegs: state
   }
 }
 

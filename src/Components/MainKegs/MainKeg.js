@@ -13,15 +13,15 @@ function MainKeg(props){
       brand: event.target.brandName.value, 
       price: event.target.price.value,
       alcoholPercent: event.target.alcoholPercent.value,
-      id: v4()});
+      inventory: 124,
+      id: v4()
+    });
   }
 
-  console.log(props.kegs);
   return (
     <React.Fragment>
       <div className="kegs">
-        {props.kegs.map((keg, index) => { //creating list
-          console.log("KEG: ", keg);
+        {Object.values(props.kegs).map((keg, index) => { //creating list
           return <Keg
             key={keg.id}
             name={keg.name}

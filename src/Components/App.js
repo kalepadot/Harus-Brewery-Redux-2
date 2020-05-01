@@ -107,12 +107,12 @@ handleKegPurchase = (id) => {
     });
   }
 
-  // handleKegDelete = id => {
-  //   const updateKegsList = this.state.kegList.filter(keg => keg.id !== id);
-  //   this.setState({
-  //     kegList: [...updateKegsList]
-  //   })
-  // }
+//   handleKegDelete = id => {
+//     const updateKegsList = this.state.kegList.filter(keg => keg.id !== id);
+//     this.setState({
+//       kegList: [...updateKegsList]
+//     })
+//   }
 // og keg delete that works ^ ^ ^
 
 handleKegDelete = (id) => {

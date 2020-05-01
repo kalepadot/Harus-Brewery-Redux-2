@@ -49,8 +49,9 @@ export default (state = initialState, action) => {
     });
     case 'DELETE_KEG':
       const newState = { ...state };
+      const updatedKegsList = newState.kegsList.filter(keg => keg.id !== id);
       delete newState[id];
-      return newState;
+      return Object.assign(newState, { kegsList: updatedKegsList }) ;
   default:
     return state;
   }

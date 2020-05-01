@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import React from 'react';
 import KegHeader from './KegHeader/KegHeader';
 import KegDetails from './KegDetails/KegDetails';
@@ -155,5 +156,5 @@ handleKegPurchase = (id) => {
 }
 
 
-
+App = connect()(App);
 export default App;

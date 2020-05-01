@@ -2,6 +2,11 @@ import kegListReducer from '../../reducers/keg-list-reducer';
 
 describe('kegListReducer', () => {
 
+const currentState = {
+  1: {name: 'haru', brand: 'harus brewery', price: 10, alcoholPercent: 10, inventory: 124, id: 1 },
+  2: { name: 'jeremy', brand: 'jeremys brewery', price: 10, alcoholPercent: 10, inventory: 124, id: 1 }
+}
+
   let action;
   const kegData = {
     name: "haru",
@@ -16,7 +21,7 @@ describe('kegListReducer', () => {
     expect(kegListReducer({}, { type: null })).toEqual({});
   });
   
-    test('Should successfully add new ticket data to masterKegList', () => {
+    test('Should successfully add new keg data to masterKegList', () => {
     const { name, brand, price, alcoholPercent, inventory, id } = kegData;
     action = {
       type: 'ADD_KEG',
@@ -37,6 +42,15 @@ describe('kegListReducer', () => {
         inventory: inventory,
         id: id
       }
+    });
+    test('Should successfully delete a keg', () => {
+      action = {
+        type: 'DELETE_TICKET',
+        id: 1
+      };
+      expect(kegListReducer(currentState, action)).toEqual({
+        2: {name: 'jeremy', brand: 'jeremys brewery', price: 10, alcoholPercent: 10, inventory: 124, id: 2 }
+      });
     });
   });
 });

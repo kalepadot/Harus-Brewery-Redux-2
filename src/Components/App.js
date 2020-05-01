@@ -51,7 +51,7 @@ constructor(props) {
   }
 }
 handleKegSelection = (id) => {
-  const selectedKeg = this.props.masterKegList.filter(keg => keg.id === id)[0];
+  const selectedKeg = this.props.kegs.filter(keg => keg.id === id)[0];
   this.setState({
     currentSelectedKeg: selectedKeg,
     showHomePage: false
@@ -107,12 +107,12 @@ handleKegPurchase = (id) => {
     });
   }
 
-  handleKegDelete = id => {
-    const updateKegsList = this.state.kegList.filter(keg => keg.id !== id);
-    this.setState({
-      kegList: [...updateKegsList]
-    })
-  }
+  // handleKegDelete = id => {
+  //   const updateKegsList = this.state.kegList.filter(keg => keg.id !== id);
+  //   this.setState({
+  //     kegList: [...updateKegsList]
+  //   })
+  // }
 // og keg delete that works ^ ^ ^
 
 handleKegDelete = (id) => {
@@ -152,7 +152,7 @@ handleKegDelete = (id) => {
         keg={this.state.currentSelectedKeg}
         handleBackToKegs={this.handleBackToKegs}/>,
         body: <MainKeg
-            kegs={this.props.masterKegList}
+            kegs={this.props.kegs}
             onKegSelection={this.handleKegSelection}
             onNewKegCreation={this.handleAddingNewKeg}
             handleKegDelete={this.handleKegDelete} />
@@ -183,13 +183,12 @@ handleKegDelete = (id) => {
   }
 }
 App.propTypes = {
-  masterKegList: PropTypes.object
+  kegs: PropTypes.array
 };
 
 const mapStateToProps = state => {
   return {
-    masterKegList: state,
-    kegs: state.kegs
+    kegs: state.kegsList
   }
 }
 

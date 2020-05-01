@@ -20,8 +20,8 @@ function MainKeg(props){
   return (
     <React.Fragment>
       <div className="kegs">
-        {Object.values(props.kegs).map((keg, index) => { //creating list
-          
+        {props.kegs.map((keg, index) => { //creating list
+          console.log("KEG: ", keg);
           return <Keg
             key={keg.id}
             name={keg.name}
@@ -64,7 +64,7 @@ function MainKeg(props){
 }
 
 MainKeg.propTypes = {
-  kegs: PropTypes.object,
+  kegs: PropTypes.array,
   onNewKegCreation: PropTypes.func,
   onKegSelection: PropTypes.func
 }

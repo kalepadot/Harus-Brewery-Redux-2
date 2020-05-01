@@ -12,7 +12,7 @@ describe('kegListReducer', () => {
     id: 1
   };
 
-const currentState = {
+const currentState = {,
   1: {name: 'haru', brand: 'harus brewery', price: 10, alcoholPercent: 10, inventory: 124, id: 1 },
   2: { name: 'jeremy', brand: 'jeremys brewery', price: 10, alcoholPercent: 10, inventory: 124, id: 2 }
 }

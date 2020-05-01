@@ -16,12 +16,13 @@ function MainKeg(props){
       id: v4()});
   }
 
-  
+  console.log(props.kegs);
   return (
     <React.Fragment>
       <div className="kegs">
-        {props.kegs.map((keg, index) => (
-          <Keg
+        {Object.values(props.kegs).map((keg, index) => { //creating list
+          
+          return <Keg
             key={keg.id}
             name={keg.name}
             brand={keg.brand}
@@ -31,7 +32,7 @@ function MainKeg(props){
             id={keg.id}
             onKegClick={props.onKegSelection}
             handleKegDelete={props.handleKegDelete} />
-        ))}
+        })}
       </div>
       
       <form className="createForm" onSubmit={handleNewKegFormSubmit}>
@@ -59,11 +60,11 @@ function MainKeg(props){
         <button type='submit'>Add Keg</button>
       </form>
     </React.Fragment>
-  )
+  );
 }
 
 MainKeg.propTypes = {
-  kegs: PropTypes.arrayOf(PropTypes.object),
+  kegs: PropTypes.object,
   onNewKegCreation: PropTypes.func,
   onKegSelection: PropTypes.func
 }

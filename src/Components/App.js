@@ -152,7 +152,7 @@ handleKegDelete = (id) => {
         keg={this.state.currentSelectedKeg}
         handleBackToKegs={this.handleBackToKegs}/>,
         body: <MainKeg
-            kegs={this.state.kegList}
+            kegs={this.props.masterKegList}
             onKegSelection={this.handleKegSelection}
             onNewKegCreation={this.handleAddingNewKeg}
             handleKegDelete={this.handleKegDelete} />
@@ -173,7 +173,7 @@ handleKegDelete = (id) => {
 
  render() {
     let currentPage = this.currentPage();
-    console.log(this.props.masterKegList);
+    
     return (
       <React.Fragment>
         {currentPage.header}
@@ -188,7 +188,8 @@ App.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    masterKegList: state
+    masterKegList: state,
+    kegs: state.kegs
   }
 }
 

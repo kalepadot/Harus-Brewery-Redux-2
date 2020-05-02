@@ -5,9 +5,9 @@ import KegHeader from './KegHeader/KegHeader';
 import KegDetails from './KegDetails/KegDetails';
 import MainHeader from './MainHeader/MainHeader';
 import MainKeg from './MainKegs/MainKeg';
-import BeerImage from '../img/420.gif';
-import FishImage from '../img/fish.gif';
-import Woof from '../img/woof.gif';
+// import BeerImage from '../img/420.gif';
+// import FishImage from '../img/fish.gif';
+// import Woof from '../img/woof.gif';
 
 import '../App.css';
 
@@ -144,7 +144,7 @@ handleKegDelete = (id) => {
   //     }
   //   }
 
-   if (this.state.showHomePage) {     //hmmmmmmmm ??? check this after first run
+   if (this.props.showHomePage) {     //hmmmmmmmm ??? check this after first run
       return {
         // header: <MainHeader 
           // onShowShoppingCart={this.handleShowShoppingCart}
@@ -187,13 +187,16 @@ handleKegDelete = (id) => {
 
 App.propTypes = {
   kegs: PropTypes.object,
-  currentSelectedKeg: PropTypes.object
+  currentSelectedKeg: PropTypes.object,
+  showHomePage: PropTypes.object
+
 };
 //mapStateToProps actually means...
 const mapStateToProps = state => {
   return {
     kegs: state.kegs,
-    currentSeletedkeg: state.currentSelectedKeg
+    currentSeletedkeg: state.currentSelectedKeg,
+    showHomePage: state.showHomePage
   }
 }
 

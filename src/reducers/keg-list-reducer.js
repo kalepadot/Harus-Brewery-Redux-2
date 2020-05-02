@@ -8,8 +8,9 @@ const currentState = {
   kegs: {
     1: {name: "I'd Rather Be Smokin Cat Nip Pale Ale", brand: "Princess Haru's Brewery", image: BeerImage, price: "$4.20", alcoholPercent: "8%", inventory: 124, id: 1},
     2: {name: "Your Dog Sucks Milk Stout", brand: "Princess Haru's Brewery", image: FishImage, price: "$4.20", alcoholPercent: "8%", inventory: 124, id: 2},
-    3: { name: "No Dogs No Masters Lager", brand: "Princess Haru's Brewery", image: Woof, price: "$4.20", alcoholPercent: "666%", inventory: 124, id: 3} }
+    3: { name: "No Dogs No Masters Lager", brand: "Princess Haru's Brewery", image: Woof, price: "$4.20", alcoholPercent: "666%", inventory: 124, id: 3} 
   }
+}
 
 
 export default (state = currentState, action) => {
@@ -32,7 +33,7 @@ export default (state = currentState, action) => {
     
     case 'DELETE_KEG':
       const newState = { ...state };
-      delete newState[id];
+      delete newState.kegs[id];
       return newState;
       // return Object.assign(newState, { kegsList: updatedKegsList }) ;
   default:

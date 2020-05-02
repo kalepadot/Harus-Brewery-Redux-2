@@ -16,7 +16,7 @@ class App extends React.Component {
 constructor(props) {
   super(props);
   this.state = {
-    showHomePage: true,
+    // showHomePage: true,
     // kegList: [
     //   {
     //     name: "I'd Rather Be Smokin Cat Nip Pale Ale",
@@ -47,9 +47,10 @@ constructor(props) {
     //   },
 
     // ],
-    currentSelectedKeg: {},
+    // currentSelectedKeg: {},
   }
 }
+
 handleKegSelection = (id) => {
   const selectedKeg = this.props.kegs.filter(keg => keg.id === id)[0];
   this.setState({
@@ -149,7 +150,7 @@ handleKegDelete = (id) => {
           // onShowShoppingCart={this.handleShowShoppingCart}
           // cartItemNumber={this.state.shoppingCartItems.length}/>,
         header: <MainHeader
-        keg={this.state.currentSelectedKeg}
+        keg={this.props.currentSelectedKeg}
         handleBackToKegs={this.handleBackToKegs}/>,
         body: <MainKeg
             kegs={this.props.kegs}
@@ -161,10 +162,10 @@ handleKegDelete = (id) => {
      else{
       return {
         header: <KegHeader 
-          keg={this.state.currentSelectedKeg}
+          keg={this.props.currentSelectedKeg}
           handleBackToKegs={this.handleBackToKegs}/>,
         body: <KegDetails 
-          keg={this.state.currentSelectedKeg}
+          keg={this.props.currentSelectedKeg}
           onKegPurchase={this.handleKegPurchase}
           onKegRestock={this.handleKegRestock}/>
       }
@@ -185,12 +186,14 @@ handleKegDelete = (id) => {
 }
 
 App.propTypes = {
-  kegs: PropTypes.array
+  kegs: PropTypes.object,
+  currentSelectedKeg: PropTypes.object
 };
-
+//mapStateToProps actually means...
 const mapStateToProps = state => {
   return {
-    kegs: state
+    kegs: state.kegs,
+    currentSeletedkeg: state.currentSelectedKeg
   }
 }
 

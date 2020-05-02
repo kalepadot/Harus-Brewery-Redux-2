@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const KegHeader = (props) => {
+  console.log("Keg header props: ", props);
   return (
     <div className="detailsHeader">
       <div className="columns">

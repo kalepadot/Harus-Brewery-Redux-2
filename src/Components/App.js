@@ -147,6 +147,7 @@ handleKegDelete = (id) => {
   //     }
   //   }
 
+  console.log("BEFORE HEADER RENDER: ", this.props);
    if (this.props.showHomePage) {     //hmmmmmmmm ??? check this after first run
       return {
         // header: <MainHeader 
@@ -178,7 +179,6 @@ handleKegDelete = (id) => {
  render() {
     let currentPage = this.currentPage();
     
-    console.log("PROPS: ", this.props);
     return (
       <React.Fragment>
         {currentPage.header}
@@ -198,7 +198,7 @@ App.propTypes = {
 const mapStateToProps = state => {
   return {
     kegs: state.kegs,
-    currentSeletedkeg: state.currentSelectedKeg,
+    currentSelectedKeg: state.currentSelectedKeg,
     showHomePage: state.showHomePage
   
   }

@@ -7,6 +7,7 @@ const KegDetails = (props) => {
     return count > 0 ? <button onClick={() => props.onKegPurchase(props.keg.id)}>Pour up a Drank</button> : <p>Fresh Out Bro!</p>
   }
 
+  console.log("IS IT A KEG: ", props.keg);
   return (
     <div className="details" >
       <p>How much: {props.keg.price}</p>

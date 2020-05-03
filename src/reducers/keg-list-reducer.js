@@ -40,7 +40,7 @@ export default (state = initialState, action) => {
     case 'SELECTED_KEG':
       const { selectedKeg } = action;
       // const newSelectedKegState = Object.assign({}, state.currentSelectedKeg, selectedKeg)
-      return { ...state, currentSelectedKeg : selectedKeg };
+      return { ...state, currentSelectedKeg : selectedKeg, showHomePage: false };
 
 
 

@@ -52,11 +52,14 @@ constructor(props) {
 }
 
 handleKegSelection = (id) => {
-  const selectedKeg = this.props.kegs.filter(keg => keg.id === id)[0];
-  this.setState({
-    currentSelectedKeg: selectedKeg,
-    showHomePage: false
-  })
+  const selectedKeg =  this.props.kegs[id];
+  const { dispatch } = this.props;
+  // this.setState({
+    const action = {
+      type: 'SELECTED_KEG',
+      selectedKeg: selectedKeg
+    }
+    dispatch(action);
 }
 
 handleAddingNewKeg = (newKeg) => {   //doesnt work
@@ -75,7 +78,7 @@ handleAddingNewKeg = (newKeg) => {   //doesnt work
     inventory: inventory
   }
   dispatch(action);
-  this.setState({showHomePage: true});
+  // this.setState({showHomePage: true});
 }
 
 handleBackToKegs = () => {
@@ -197,6 +200,7 @@ const mapStateToProps = state => {
     kegs: state.kegs,
     currentSeletedkeg: state.currentSelectedKeg,
     showHomePage: state.showHomePage
+  
   }
 }
 

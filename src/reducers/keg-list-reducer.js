@@ -2,7 +2,7 @@ import BeerImage from '../img/420.gif';
 import FishImage from '../img/fish.gif';
 import Woof from '../img/woof.gif';
 
-const currentState = {
+const initialState = {
   showHomePage: true,
   currentSelectedKeg: {},
   kegs: {
@@ -13,7 +13,7 @@ const currentState = {
 }
 
 
-export default (state = currentState, action) => {
+export default (state = initialState, action) => {
   const { name, brand, image, price, alcoholPercent, inventory, id } = action;
   switch (action.type) {
   case 'ADD_KEG':
@@ -36,7 +36,16 @@ export default (state = currentState, action) => {
       delete newState.kegs[id];
       return newState;
       // return Object.assign(newState, { kegsList: updatedKegsList }) ;
+
+    case 'SELECTED_KEG':
+      const { selectedKeg } = action;
+      // const newSelectedKegState = Object.assign({}, state.currentSelectedKeg, selectedKeg)
+      return { ...state, currentSelectedKeg : selectedKeg };
+
+
+
   default:
     return state;
+
   }
 };

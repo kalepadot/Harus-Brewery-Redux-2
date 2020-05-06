@@ -100,6 +100,7 @@ handleKegPurchase = (id) => {
      type: 'KEG_PURCHACE',
      id: id
     }
+    dispatch(action);
   }
     // const newShoppingCartItems = this.state.shoppingCartItems.concat(selectedAlbum);
     // const newInventory = selectedKeg.inventory -1;

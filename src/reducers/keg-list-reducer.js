@@ -35,20 +35,28 @@ export default (state = initialState, action) => {
       const newState = { ...state };
       delete newState.kegs[id];
       return newState;
-      // return Object.assign(newState, { kegsList: updatedKegsList }) ;
+
 
     case 'SELECTED_KEG':
       const { selectedKeg } = action;
-      // const newSelectedKegState = Object.assign({}, state.currentSelectedKeg, selectedKeg)
-      return { ...state, currentSelectedKeg : selectedKeg, showHomePage: false };
+   
+      return { ...state, currentSelectedKeg: selectedKeg, showHomePage: false };
 
     
     case 'RETURN_HOME':
     
     return { ...state, showHomePage: true };
   
+    case 'KEG_PURCHASE':
+      
+      const newInventoryState = { ...state, currentSelectedKeg: {...state.currentSelectedKeg, inventory: state.currentSelectedKeg.inventory -1 }  };
+      return newInventoryState;
     
 
+    case 'KEG_RESTOCK':
+
+    const newRefillState = { ...state, currentSelectedKeg:{...state.currentSelectedKeg, inventory: state.currentSelectedKeg.inventory + 124 }};
+      return newRefillState;
 
   default:
     return state;

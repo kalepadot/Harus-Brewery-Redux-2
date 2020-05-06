@@ -30,7 +30,7 @@ export default (state = initialState, action) => {
     })
 
     return  { ...state, kegs: newKegsList };
-    
+   
     case 'DELETE_KEG':
       const newState = { ...state };
       delete newState.kegs[id];
@@ -42,6 +42,12 @@ export default (state = initialState, action) => {
       // const newSelectedKegState = Object.assign({}, state.currentSelectedKeg, selectedKeg)
       return { ...state, currentSelectedKeg : selectedKeg, showHomePage: false };
 
+    
+    case 'RETURN_HOME':
+    
+    return { ...state, showHomePage: true };
+  
+    
 
 
   default:

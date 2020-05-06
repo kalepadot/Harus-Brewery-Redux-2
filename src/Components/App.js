@@ -5,6 +5,7 @@ import KegHeader from './KegHeader/KegHeader';
 import KegDetails from './KegDetails/KegDetails';
 import MainHeader from './MainHeader/MainHeader';
 import MainKeg from './MainKegs/MainKeg';
+
 // import BeerImage from '../img/420.gif';
 // import FishImage from '../img/fish.gif';
 // import Woof from '../img/woof.gif';
@@ -82,23 +83,34 @@ handleAddingNewKeg = (newKeg) => {   //doesnt work
 }
 
 handleBackToKegs = () => {
-  this.setState({   //dispatch(action) ? ? ?
-    showHomePage: true
-  })
+  // this.setState ({   //dispatch(action) ? ? ?
+  //   showHomePage: true
+  // })
+  const { dispatch } = this.props;
+  const action = {
+    type: 'RETURN_HOME',
+    
+  }
+  dispatch(action);
 }
 
 handleKegPurchase = (id) => {
-    const selectedKeg = this.state.kegList.filter(keg => keg.id === id)[0];
+   const { dispatch } = this.props;
+   const action = {
+     type: 'KEG_PURCHACE',
+     id: id
+    }
+  }
     // const newShoppingCartItems = this.state.shoppingCartItems.concat(selectedAlbum);
-    const newInventory = selectedKeg.inventory -1;
-    const updatedKeg = {...selectedKeg, inventory: newInventory};
-    const oldKegs = this.state.kegList.filter(keg => keg.id !== id);
-    this.setState({
-      // shoppingCartItems: newShoppingCartItems,
-      kegList: [...oldKegs, updatedKeg],
-      currentSelectedKeg: updatedKeg
-    });
-}
+    // const newInventory = selectedKeg.inventory -1;
+    // const updatedKeg = {...selectedKeg, inventory: newInventory};
+    // const oldKegs = this.state.kegList.filter(keg => keg.id !== id);
+    // this.setState({
+    //   // shoppingCartItems: newShoppingCartItems,
+    //   kegList: [...oldKegs, updatedKeg],
+    //   currentSelectedKeg: updatedKeg
+    // });
+
 
   handleKegRestock = (id) => {
     const selectedKeg = this.state.kegList.filter(keg => keg.id === id)[0];
@@ -110,15 +122,6 @@ handleKegPurchase = (id) => {
       currentSelectedKeg: updatedKeg
     });
   }
-
-//   handleKegDelete = id => {
-//     const updateKegsList = this.state.kegList.filter(keg => keg.id !== id);
-//     this.setState({
-//       kegList: [...updateKegsList]
-//     })
-//   }
-// og keg delete that works ^ ^ ^
-
 handleKegDelete = (id) => {
   const { dispatch } = this.props;
   const action = {
